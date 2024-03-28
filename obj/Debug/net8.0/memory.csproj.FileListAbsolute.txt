@@ -1,0 +1,14 @@
+/Users/q.a.nasser/Downloads/dotnet/memory/bin/Debug/net8.0/memory
+/Users/q.a.nasser/Downloads/dotnet/memory/bin/Debug/net8.0/memory.deps.json
+/Users/q.a.nasser/Downloads/dotnet/memory/bin/Debug/net8.0/memory.runtimeconfig.json
+/Users/q.a.nasser/Downloads/dotnet/memory/bin/Debug/net8.0/memory.dll
+/Users/q.a.nasser/Downloads/dotnet/memory/bin/Debug/net8.0/memory.pdb
+/Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/memory.GeneratedMSBuildEditorConfig.editorconfig
+/Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/memory.AssemblyInfoInputs.cache
+/Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/memory.AssemblyInfo.cs
+/Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/memory.csproj.CoreCompileInputs.cache
+/Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/memory.dll
+/Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/refint/memory.dll
+/Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/memory.pdb
+/Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/memory.genruntimeconfig.cache
+/Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/ref/memory.dll
