@@ -12,3 +12,4 @@
 /Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/memory.pdb
 /Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/memory.genruntimeconfig.cache
 /Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/ref/memory.dll
+/Users/q.a.nasser/Downloads/dotnet/memory/obj/Debug/net8.0/memory.sourcelink.json

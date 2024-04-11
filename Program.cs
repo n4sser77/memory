@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Transactions;
 
 namespace MemoryGame
@@ -25,7 +26,7 @@ namespace MemoryGame
                 int matchesFound = 0; // Number of matched pairs
                 shuffleCards(cards); // Shuffle the cards
                 Console.WriteLine("Use arrows to select cards. Press Enter to flip cards.");
-                Console.WriteLine("pressany key to start...");
+                Console.WriteLine("press any key to start...");
                 Console.ReadKey();
 
                 Stopwatch timer = Stopwatch.StartNew();
@@ -88,14 +89,31 @@ namespace MemoryGame
                 Console.WriteLine("Attempts: " + tries);
                 string input = "";
 
-
-                Console.WriteLine("Would you like to play again? (y/n)");
-                input = Console.ReadLine();
-                if (input == "n" || input == "N") playAgain = false;
-                else if (input == "y" || input == "Y") playAgain = true;
+                for (int i = 0; i < isFlipped.Length; i++) isFlipped[i] = false; ;
+               
+               while (playAgain)
+               {
+                   Console.WriteLine("Would you like to play again? (y/n)");
+                   input = Console.ReadLine();
+               
+                   if (input != null && (input.Equals("n", StringComparison.OrdinalIgnoreCase) || input.Equals("no", StringComparison.OrdinalIgnoreCase)))
+                   {
+                       playAgain = false;
+                   }
+                   else if (input != null && (input.Equals("y", StringComparison.OrdinalIgnoreCase) || input.Equals("yes", StringComparison.OrdinalIgnoreCase)))
+                   {
+                       playAgain = true;
+                       break;
+                   }
+                   else
+                   {
+                       Console.WriteLine("Invalid input");
+                   }
+               }
 
 
             }
+            Console.WriteLine("Thanks for playing, Goodbye!");
         }
 
         // Selects a card using arrow keys, displays the board, and allows the user to make a choice. Returns the index of the selected card.
