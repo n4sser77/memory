@@ -36,7 +36,7 @@ namespace MemoryGame
                     while (waitingForChoice)
                     {
                         Console.WriteLine("Attempts: " + tries);
-                        previousIndex = SelectCardWithArrowKeys1(hiddenCards, cards, currentIndex, isFlipped, tries);
+                        previousIndex = SelectCard(hiddenCards, cards, currentIndex, isFlipped, tries, "Choose a first card");
                         waitingForChoice = false;
 
                     }
@@ -48,7 +48,7 @@ namespace MemoryGame
                     while (waitingForChoice)
                     {
                         Console.WriteLine("Attempts: " + tries);
-                        secondIndex = SelectCardWithArrowKeys2(hiddenCards, cards, currentIndex, isFlipped, previousIndex, tries);
+                        secondIndex = SelectCard(hiddenCards, cards, currentIndex, isFlipped, tries, "Choose a second card");
                         waitingForChoice = false;
                         tries++;
                     }
@@ -63,8 +63,6 @@ namespace MemoryGame
                         isFlipped[previousIndex] = true; // Set the isFlipped flags
                         isFlipped[secondIndex] = true;
                         matchesFound++;
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
                     }
                     else
                     {
@@ -74,8 +72,7 @@ namespace MemoryGame
                         isFlipped[previousIndex] = false;
                         isFlipped[secondIndex] = false;
                         DisplayBoardWithCursor(hiddenCards, currentIndex, tries);
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
+
 
                     }
                 }
@@ -166,7 +163,7 @@ namespace MemoryGame
         }
 
         // Selects a card using arrow keys, displays the board with a cursor. 
-        static int SelectCardWithArrowKeys2(char[] hiddenCards, char[] cards, int currentIndex, bool[] isFlipped, int previousIndex, int tries)
+        static int SelectCardWithArrowKeys2(char[] hiddenCards, char[] cards, int currentIndex, bool[] isFlipped, int tries)
         {
             bool waitingForChoice = true;
             int secondIndex = -1;
@@ -204,11 +201,8 @@ namespace MemoryGame
                         else
                         {
                             FlipCard(hiddenCards, cards, currentIndex); // Flip the card
-
                             isFlipped[currentIndex] = true; // Mark the card as isFlipped
                             secondIndex = currentIndex;
-
-
                             Console.WriteLine("Checking for match");
                             waitingForChoice = false;
                             return secondIndex; // Return the result
@@ -220,6 +214,57 @@ namespace MemoryGame
 
             }
             return secondIndex;
+        }
+
+          static int SelectCard(char[] hiddenCards, char[] cards, int currentIndex, bool[] isFlipped, int tries, string message)
+        {
+            bool waitingForChoice = true;
+            int SelectedCardIndex = -1;
+
+            while (waitingForChoice)
+            {
+                Console.Clear();
+                DisplayBoardWithCursor(hiddenCards, currentIndex, tries);
+                Console.WriteLine(message);
+                ConsoleKeyInfo keyInfo = Console.ReadKey(); // Read the user's key press
+
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.LeftArrow:
+                        currentIndex = Math.Max(currentIndex - 1, 0); // Move the cursor to the left
+                        break;
+                    case ConsoleKey.RightArrow:
+                        currentIndex = Math.Min(currentIndex + 1, hiddenCards.Length - 1); // Move the cursor to the right
+                        break;
+                    case ConsoleKey.UpArrow:
+                        currentIndex = Math.Max(currentIndex - 4, 0); // Move the cursor up by 4 cards
+                        break;
+                    case ConsoleKey.DownArrow:
+                        currentIndex = Math.Min(currentIndex + 4, hiddenCards.Length - 1); // Move the cursor down by 4 cards
+                        break;
+                    case ConsoleKey.Enter:
+
+                        if (isFlipped[currentIndex]) // Check if the card is not already isFlipped
+                        {
+                            Console.WriteLine("The card is already isFlipped.");
+                            Thread.Sleep(500);
+                            waitingForChoice = true;
+                        }
+                        else
+                        {
+                            FlipCard(hiddenCards, cards, currentIndex); // Flip the card
+                            isFlipped[currentIndex] = true; // Mark the card as isFlipped
+                            SelectedCardIndex = currentIndex;
+                            waitingForChoice = false;
+                            return SelectedCardIndex; // Return the result
+                        }
+                        break;
+
+
+                }
+
+            }
+            return SelectedCardIndex;
         }
 
 
